@@ -79,15 +79,19 @@ main p {
 ul {
   display: grid;
   width: 100%;
+  list-style: none;
+  padding: 0;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: auto(1fr);
   justify-content: center;
+  align-items: center;
   gap: 1em;
 }
 
 li {
   display: grid;
   gap: 0.5em;
+  justify-content: center;
   height: max-content;
   width: 100%;
 }
