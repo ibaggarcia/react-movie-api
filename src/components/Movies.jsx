@@ -1,29 +1,29 @@
-function ListOfMovies({ movies }) {
+function HasMovies({ movies }) {
     return (
         <ul>
             {
                 movies.map(movie => (
                     <li key={movie.id}>
-                        <h3>{movie.title}</h3>
+                        <h3>{movie.title.length > 30 ? movie.title.slice(0, 27) + '...' : movie.title}</h3>
                         <p>{movie.year}</p>
-                        <img src={movie.poster} alt={movie.title} />
+                        <img src={movie.img} alt={movie.title} />
                     </li>
                 ))
-            }    
+            }
         </ul>
     )
 }
 
-function NoResultsOrError({ movies }) {
-    return movies.Error
-        ? (<h1>{movies.Error}</h1>)
-        : (<h1>Bienvenido, haz una búsqueda!</h1>)
+function HasError({ error }) {
+    return (
+        error ? (<h1>{error}</h1>)
+              : (<h1>Bienvenido! Realiza una búsqueda</h1>)
+    )
 }
 
-export function Movies({ movies }) {
-    const hasMovies = movies.length > 0 
-
-    return hasMovies
-        ? (<ListOfMovies movies={movies}/>)
-        : (<NoResultsOrError movies={movies}/>)  
+export function Movies({ moviesList, error }) {
+    return(
+        moviesList ? (<HasMovies movies={moviesList}/>)
+                   : (<HasError error={error}/>)
+    )
 }

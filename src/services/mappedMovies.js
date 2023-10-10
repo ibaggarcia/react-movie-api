@@ -1,10 +1,9 @@
-export const mappedMovies = (resMovies) => {
-    const mappedMovies = resMovies.Search.map(movie => ({
+export const mappedMovies = ({ movies }) => {
+    return movies?.Search.map(movie => ({
         id: movie.imdbID,
         title: movie.Title,
         year: movie.Year,
-        poster: movie.Poster
+        img: movie.Poster
     }))
-
-    return mappedMovies 
 }
+    
